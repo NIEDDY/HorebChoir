@@ -13,7 +13,7 @@ export default function Signup() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Mock signup - in real app, this would call an API
-    login(email, password, role);
+    login(email, role);
     navigate(`/dashboard/${role}`);
   };
 

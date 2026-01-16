@@ -5,7 +5,6 @@ import { useAttendance } from '../context/AttendanceContext';
 export default function SecretaryDashboard() {
   const { attendance, exportToExcel, createAttendanceForDate } = useAttendance();
   const [selectedDate, setSelectedDate] = useState('');
-  const [showDatePicker, setShowDatePicker] = useState(false);
   const navigate = useNavigate();
   const recentAttendance = attendance.slice(0, 3);
 

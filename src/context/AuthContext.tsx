@@ -3,7 +3,7 @@ import { User } from '../types';
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string, role: string) => void;
+  login: (email: string, role: string) => void;
   logout: () => void;
   isAuthenticated: boolean;
 }
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  const login = (email: string, password: string, role: string) => {
+  const login = (email: string, role: string) => {
     // Mock login - in real app, this would call an API
     const mockUser: User = {
       id: '1',

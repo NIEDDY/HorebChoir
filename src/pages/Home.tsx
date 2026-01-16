@@ -1,17 +1,12 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
+  visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
+  },
 };
 
 export default function Home() {
@@ -101,10 +96,14 @@ export default function Home() {
           ].map((card, i) => (
             <motion.div
               key={card.title}
-              custom={i}
               variants={cardVariants}
               initial="hidden"
               animate="visible"
+              transition={{
+                delay: i * 0.2,
+                duration: 0.6,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
               whileHover={{ y: -8, scale: 1.02 }}
               className={`bg-white rounded-2xl p-8 shadow-xl ${card.shadow} border border-gray-100`}
             >

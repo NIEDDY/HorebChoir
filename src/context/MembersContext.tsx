@@ -213,7 +213,7 @@ export const MembersProvider = ({ children }: { children: ReactNode }) => {
         if (!row || row.length === 0) continue;
 
         // Safely get name value
-        const nameValue = nameIndex !== -1 && row[nameIndex] !== undefined && row[nameIndex] !== null 
+        const nameValue = row[nameIndex] !== undefined && row[nameIndex] !== null 
           ? row[nameIndex] 
           : '';
         const name = String(nameValue).trim();

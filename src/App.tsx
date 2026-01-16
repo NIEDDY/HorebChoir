@@ -12,7 +12,7 @@ import Attendance from './pages/Attendance';
 import Members from './pages/Members';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated } = useAuth();
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
