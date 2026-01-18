@@ -1,11 +1,23 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAttendance } from '../context/AttendanceContext';
+import { useMembers } from '../context/MembersContext';
 
 export default function SecretaryDashboard() {
   const { attendance, exportToExcel, createAttendanceForDate } = useAttendance();
+  const { members } = useMembers();
   const [selectedDate, setSelectedDate] = useState('');
   const navigate = useNavigate();
+  const totalMembers = members.length;
+  const totalRehearsals = attendance.length;
+  
+  const allRecords = attendance.flatMap(a => a.records);
+  const presentCount = allRecords.filter(r => r.status === 'present').length;
+  const totalRecords = allRecords.length;
+  const averageAttendance = totalRecords > 0 
+    ? ((presentCount / totalRecords) * 100).toFixed(1) 
+    : '0';
+
   const recentAttendance = attendance.slice(0, 3);
 
   const handleTakeAttendance = () => {
@@ -43,6 +55,45 @@ export default function SecretaryDashboard() {
             <span>📥</span>
             Export to Excel
           </button>
+        </div>
+      </div>
+
+      {/* Overview Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Total Members</p>
+              <p className="text-3xl font-bold text-gray-900 mt-2">{totalMembers}</p>
+            </div>
+            <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+              <span className="text-2xl">👥</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Total Rehearsals</p>
+              <p className="text-3xl font-bold text-gray-900 mt-2">{totalRehearsals}</p>
+            </div>
+            <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
+              <span className="text-2xl">📅</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Average Attendance</p>
+              <p className="text-3xl font-bold text-gray-900 mt-2">{averageAttendance}%</p>
+            </div>
+            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <span className="text-2xl">📊</span>
+            </div>
+          </div>
         </div>
       </div>
 
