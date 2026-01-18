@@ -129,23 +129,6 @@ export default function PresidentDashboard() {
           </div>
         </div>
       </div>
-
-      {/* Charts Placeholder */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Attendance Trend</h2>
-          <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
-            <p className="text-gray-500">Chart placeholder - Attendance over time</p>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Member Participation</h2>
-          <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
-            <p className="text-gray-500">Chart placeholder - Member participation rates</p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
