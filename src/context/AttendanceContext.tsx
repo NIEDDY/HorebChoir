@@ -91,7 +91,10 @@ export const AttendanceProvider = ({ children }: { children: ReactNode }) => {
             month: 'long',
             day: 'numeric',
           });
-          rows.push([date, record.memberName, record.status === 'present' ? 'Present' : 'Absent']);
+          rows.push([date, record.memberName, 
+            record.status === 'present' ? 'Present' : 
+            record.status === 'absent' ? 'Absent' : 
+            'Permission']);
         });
       });
 

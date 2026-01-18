@@ -15,7 +15,7 @@ export interface Member {
   [key: string]: string | number; // Allow custom fields
 }
 
-export type AttendanceStatus = 'present' | 'absent';
+export type AttendanceStatus = 'present' | 'absent' | 'permission';
 
 export interface AttendanceRecord {
   id: string;

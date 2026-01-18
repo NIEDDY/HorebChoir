@@ -237,11 +237,14 @@ export default function Attendance() {
                           className={`px-3 py-1 rounded-lg text-sm font-medium border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-colors ${
                             record.status === 'present'
                               ? 'bg-emerald-100 text-emerald-700 border-emerald-300'
-                              : 'bg-red-100 text-red-700 border-red-300'
+                              : record.status === 'absent'
+                              ? 'bg-red-100 text-red-700 border-red-300'
+                              : 'bg-yellow-100 text-yellow-700 border-yellow-300'
                           }`}
                         >
                           <option value="present">Present</option>
                           <option value="absent">Absent</option>
+                          <option value="permission">Permission</option>
                         </select>
                       </div>
                     ))}
